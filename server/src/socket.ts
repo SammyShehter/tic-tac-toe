@@ -8,7 +8,7 @@ export default (httpServer: any) => {
         },
     })
 
-    useSocketServer(io, { controllers: [`${__dirname}/api/controllers/*.ts`] })
+    useSocketServer(io, { controllers: [`${__dirname}/sockets/controllers/*.ts`] })
 
     return io
 }
