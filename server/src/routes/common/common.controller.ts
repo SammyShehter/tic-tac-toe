@@ -2,7 +2,7 @@ import express from 'express'
 import { error } from './common.functions'
 import debug from 'debug'
 
-const log: debug.IDebugger = debug('common-controller')
+const log: debug.IDebugger = debug('app:common-controller')
 
 class CommonController {
     public getRouteName = async (

@@ -8,7 +8,7 @@ import {
 } from 'socket-controllers'
 import debug from 'debug'
 
-const log: debug.IDebugger = debug('room-controller')
+const log: debug.IDebugger = debug('app:room-controller')
 
 @SocketController()
 export class RoomController {
@@ -20,22 +20,25 @@ export class RoomController {
     ) {
         log(`New User joining room ${message.roomId}`)
 
-        const connectedSockets = io.sockets.adapter.rooms.get(message.roomId);
+        const connectedSockets = io.sockets.adapter.rooms.get(message.roomId)
         const socketRooms = Array.from(socket.rooms.values()).filter(
-          (r) => r !== socket.id
-        );
-    
+            (r) => r !== socket.id
+        )
+
         if (
-          socketRooms.length > 0 ||
-          (connectedSockets && connectedSockets.size === 2)
+            socketRooms.length > 0 ||
+            (connectedSockets && connectedSockets.size === 2)
         ) {
-          socket.emit("room_join_error", {
-            error: "Room is full please choose another room to play!",
-          });
+            socket.emit('room_join_error', {
+                error: 'Room is full please choose another room to play!',
+            })
         } else {
-          await socket.join(message.roomId);
-          socket.emit("room_joined");
-    
+            await socket.join(message.roomId)
+            socket.emit('room_joined')
+ 
+            if (io.sockets.adapter.rooms.get(message.roomId).size === 2)
+                socket.emit('start_game', {start: true, symbol: 'x'})
+                socket.to(message.roomId).emit('start_game', {start: false, symbol: 'o'})
         }
     }
 }

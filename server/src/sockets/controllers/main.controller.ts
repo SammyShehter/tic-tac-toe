@@ -7,7 +7,7 @@ import {
 import { Socket, Server } from 'socket.io'
 import debug from 'debug'
 
-const log: debug.IDebugger = debug('main-controller')
+const log: debug.IDebugger = debug('app:main-controller')
 
 @SocketController()
 export class MainController {

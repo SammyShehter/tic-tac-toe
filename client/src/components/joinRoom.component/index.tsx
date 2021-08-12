@@ -21,14 +21,14 @@ const RoomIdInput = styled.input`
     width: 20em;
     font-size: 17px;
     outline: none;
-    border: 1px solid #8e44ad;
+    border: 1px solid black;
     border-radius: 3px;
     padding: 0 10px;
 `
 
 const JoinButton = styled.button`
     outline: none;
-    background: 8e44ad;
+    background: darkgray;
     color: #fff;
     font-size: 17px;
     border: 2px solid transparent;
@@ -39,8 +39,8 @@ const JoinButton = styled.button`
     cursor: pointer;
     &:hover {
         background: transparent;
-        border: 2px solid #8e44ad;
-        color: #8e44ad;
+        border: 2px solid black;
+        color: black;
     }
 `
 
@@ -79,7 +79,7 @@ export function JoinRoom(props: IJoinRoomProps) {
     return (
         <form onSubmit={joinRoom}>
             <JoinRoomContainer>
-                <h4>Enter Room ID to Join the Game</h4>
+                <h4>Enter Room ID to join the Game</h4>
                 <RoomIdInput
                     placeholder='Room ID'
                     value={roomName}

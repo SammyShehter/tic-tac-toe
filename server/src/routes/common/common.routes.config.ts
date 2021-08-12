@@ -2,7 +2,7 @@ import express from 'express'
 import CommonController from './common.controller'
 import debug from 'debug'
 
-const log: debug.IDebugger = debug('common-routes')
+const log: debug.IDebugger = debug('app:common-routes')
 
 export default class CommonRoutesConfig {
     app: express.Application
