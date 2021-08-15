@@ -36,7 +36,7 @@ function App() {
 
     const connectSocket = async () => {
         await socketService
-            .connect('http://localhost:5000')
+            .connect('https://xoapi.sammyshehter.com')
             .catch((err) => {
                 console.log('Error:', err)
             })
